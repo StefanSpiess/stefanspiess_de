@@ -1,0 +1,23 @@
+{
+  "name": "Stefan Spieß IT-Beratung",
+  "short_name": "Stefan Spieß",
+  "description": "IT-Consulting & Digitalisierungsberatung aus Norddeutschland",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "lang": "de",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "scope": "/",
+  "prefer_related_applications": false
+}

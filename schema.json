@@ -1,0 +1,87 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Stefan Spieß",
+  "jobTitle": "IT-Berater & Digitalisierungsexperte", 
+  "description": "IT-Consulting & Digitalisierungsberatung aus Norddeutschland. Agile Coach, Projektmanager & Software-Entwickler mit 13+ Jahren Erfahrung.",
+  "url": "https://stefanspiess.de",
+  "email": "stefan@stefanspiess.de",
+  "telephone": "+49-151-70193059",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "An der Weide 5",
+    "addressLocality": "Bassum",
+    "postalCode": "27211",
+    "addressRegion": "Niedersachsen",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.8517,
+    "longitude": 8.7272
+  },
+  "sameAs": [
+    "https://stefanspiess.de"
+  ],
+  "knowsAbout": [
+    "IT-Beratung",
+    "Digitalisierung", 
+    "Agile Methoden",
+    "Scrum",
+    "DevOps",
+    "Projektmanagement",
+    "Python-Entwicklung",
+    "Software-Entwicklung",
+    "Requirements Engineering",
+    "Change Management"
+  ],
+  "areaServed": [
+    "Deutschland",
+    "Niedersachsen", 
+    "Norddeutschland",
+    "Bremen",
+    "Hamburg"
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "IT-Berater",
+    "occupationLocation": {
+      "@type": "City",
+      "name": "Bassum"
+    },
+    "skills": [
+      "Agile Coaching",
+      "IT-Projektmanagement", 
+      "Software-Entwicklung",
+      "Digitalisierungsberatung",
+      "Requirements Engineering",
+      "Change Management",
+      "Scrum Master",
+      "DevOps"
+    ]
+  },
+  "offers": [
+    {
+      "@type": "Service",
+      "name": "IT-Beratung für kleine Probleme",
+      "description": "Schnelle Lösungen für alltägliche Digitalisierungs-Probleme. Prozessoptimierung, Tool-Auswahl und praktische IT-Hilfe.",
+      "provider": {
+        "@type": "Person",
+        "name": "Stefan Spieß"
+      },
+      "areaServed": "Deutschland",
+      "serviceType": "IT-Consulting"
+    },
+    {
+      "@type": "Service", 
+      "name": "Strategische IT-Projekte",
+      "description": "Begleitung großer IT-Projekte und digitaler Transformation. Agile Methoden, Projektmanagement und strategische IT-Beratung.",
+      "provider": {
+        "@type": "Person",
+        "name": "Stefan Spieß"
+      },
+      "areaServed": "Deutschland",
+      "serviceType": "IT-Strategy Consulting"
+    }
+  ]
+}

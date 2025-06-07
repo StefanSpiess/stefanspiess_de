@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Block access to admin and private directories if they exist
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.well-known/
+
+# Allow access to CSS and JS files for better crawling
+Allow: /styles.css
+Allow: /script.js
+
+# Sitemap location
+Sitemap: https://stefanspiess.de/sitemap.xml
+
+# Crawl-delay for good behavior
+Crawl-delay: 1
