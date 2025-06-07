@@ -65,10 +65,93 @@ function setActiveNavigation() {
     });
 }
 
+// Dark Mode Functions
+const THEME_KEY = 'stefan-spiess-theme';
+
+// Theme detection and initialization
+function initTheme() {
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Use saved theme, or user's system preference, or default to light
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    applyTheme(theme);
+    updateToggleButton(theme);
+}
+
+// Apply theme to document
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+    }
+    
+    // Save theme preference
+    localStorage.setItem(THEME_KEY, theme);
+}
+
+// Update toggle button icon and aria-label
+function updateToggleButton(theme) {
+    const toggleButton = document.getElementById('themeToggle');
+    if (toggleButton) {
+        if (theme === 'dark') {
+            toggleButton.textContent = '☀️';
+            toggleButton.setAttribute('aria-label', 'Light Mode umschalten');
+        } else {
+            toggleButton.textContent = '🌙';
+            toggleButton.setAttribute('aria-label', 'Dark Mode umschalten');
+        }
+    }
+}
+
+// Toggle between light and dark mode
+function toggleTheme() {
+    const currentTheme = document.documentElement.hasAttribute('data-theme') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    applyTheme(newTheme);
+    updateToggleButton(newTheme);
+}
+
+// Initialize theme toggle functionality
+function initThemeToggle() {
+    const toggleButton = document.getElementById('themeToggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleTheme);
+        
+        // Keyboard support
+        toggleButton.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+    }
+}
+
+// Listen for system theme changes
+function initSystemThemeListener() {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', function(e) {
+        // Only update if user hasn't manually set a preference
+        if (!localStorage.getItem(THEME_KEY)) {
+            const theme = e.matches ? 'dark' : 'light';
+            applyTheme(theme);
+            updateToggleButton(theme);
+        }
+    });
+}
+
 // Initialisierung beim Laden der Seite
 document.addEventListener('DOMContentLoaded', function() {
     setCurrentYear();
     initSmoothScrolling();
     initHeaderScrollEffect();
     setActiveNavigation();
+    initTheme();
+    initThemeToggle();
+    initSystemThemeListener();
 });
