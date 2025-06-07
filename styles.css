@@ -429,6 +429,43 @@ body {
     text-align: left;
 }
 
+/* Problem Example Boxes */
+.problem-example {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.problem-example:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.problem-example h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.problem-example p {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.problem-example p:last-child {
+    margin-bottom: 0;
+}
+
+.problem-example strong {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-content {
