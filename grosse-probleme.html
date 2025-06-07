@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Dark Mode Script - Must be before CSS to prevent FOUC -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('stefan-spiess-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    
     <!-- SEO Meta Tags -->
     <title>Strategische IT-Projekte & Digitale Transformation | Stefan Spieß</title>
     <meta name="description" content="Begleitung großer IT-Projekte und digitaler Transformation. Agile Methoden, Projektmanagement und strategische IT-Beratung für Unternehmen aller Größen.">
@@ -70,7 +80,7 @@
                 <a href="kleine-probleme.html">Kleine Probleme</a>
                 <a href="grosse-probleme.html">Große Probleme</a>
                 <a href="impressum.html">Impressum</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Dark Mode umschalten">
+                <button class="theme-toggle" id="themeToggle" aria-label="Zur dunklen Ansicht wechseln (Dark Mode)" title="Zur dunklen Ansicht wechseln">
                     🌙
                 </button>
             </nav>

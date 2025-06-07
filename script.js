@@ -77,7 +77,11 @@ function initTheme() {
     // Use saved theme, or user's system preference, or default to light
     const theme = savedTheme || (prefersDark ? 'dark' : 'light');
     
-    applyTheme(theme);
+    // Theme is already applied by inline script in head, just update button
+    if (!savedTheme && prefersDark) {
+        // Only apply theme if no saved preference but system prefers dark
+        applyTheme(theme);
+    }
     updateToggleButton(theme);
 }
 
@@ -99,10 +103,12 @@ function updateToggleButton(theme) {
     if (toggleButton) {
         if (theme === 'dark') {
             toggleButton.textContent = '☀️';
-            toggleButton.setAttribute('aria-label', 'Light Mode umschalten');
+            toggleButton.setAttribute('aria-label', 'Zur hellen Ansicht wechseln (Light Mode aktivieren)');
+            toggleButton.setAttribute('title', 'Zur hellen Ansicht wechseln - Bessere Lesbarkeit bei Tag');
         } else {
             toggleButton.textContent = '🌙';
-            toggleButton.setAttribute('aria-label', 'Dark Mode umschalten');
+            toggleButton.setAttribute('aria-label', 'Zur dunklen Ansicht wechseln (Dark Mode aktivieren)');
+            toggleButton.setAttribute('title', 'Zur dunklen Ansicht wechseln - Schont die Augen bei Dunkelheit');
         }
     }
 }

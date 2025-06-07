@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dark Mode Script - Must be before CSS to prevent FOUC -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('stefan-spiess-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    
     <title>Seite nicht gefunden - 404 | Stefan Spieß</title>
     <meta name="description" content="Die angeforderte Seite konnte nicht gefunden werden. Zurück zur Startseite von Stefan Spieß IT-Beratung.">
     <meta name="robots" content="noindex, follow">
@@ -23,7 +34,7 @@
                 <a href="kleine-probleme.html">Kleine Probleme</a>
                 <a href="grosse-probleme.html">Große Probleme</a>
                 <a href="impressum.html">Impressum</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Dark Mode umschalten">
+                <button class="theme-toggle" id="themeToggle" aria-label="Zur dunklen Ansicht wechseln (Dark Mode)" title="Zur dunklen Ansicht wechseln">
                     🌙
                 </button>
             </nav>
