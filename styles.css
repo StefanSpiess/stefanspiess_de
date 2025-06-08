@@ -303,6 +303,34 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Contact Section Container with Image */
+.contact-section-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 1rem;
+}
+
+.contact-image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-image img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
 /* Footer Styles */
 .footer {
     background: #333;
@@ -530,6 +558,22 @@ a:hover {
     .hero-greeting {
         font-size: 2.5rem;
     }
+
+    /* Mobile responsive contact section */
+    .contact-section-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-image {
+        order: -1; /* Image appears above text on mobile */
+        margin-bottom: 1rem;
+    }
+
+    .contact-image img {
+        max-width: 60%;
+        min-width: 200px;
+    }
 }
 
 /* Extra kleine Bildschirme - noch kompakter */
@@ -575,5 +619,11 @@ a:hover {
     .content-section {
         padding: 1rem;
         margin: 1rem 0;
+    }
+
+    /* Extra small screen contact section adjustments */
+    .contact-image img {
+        max-width: 80%;
+        min-width: 180px;
     }
 }
