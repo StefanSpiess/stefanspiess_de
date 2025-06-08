@@ -1,6 +1,33 @@
 # Stefan Spieß Website - Minimal .htaccess
 # IONOS handles compression, basic security & SSL automatically
 
+# Cache Control for better performance and cache busting
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Cache static assets for 1 year
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Cache JavaScript for 1 hour (to allow for updates)
+    ExpiresByType application/javascript "access plus 1 hour"
+    ExpiresByType text/javascript "access plus 1 hour"
+    
+    # Cache HTML for 1 hour
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# Force browsers to check for new versions of JS files
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
 # Custom error pages
 ErrorDocument 404 /404.html
 
