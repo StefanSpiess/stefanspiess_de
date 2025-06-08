@@ -107,23 +107,41 @@ function updateToggleButton(theme) {
             toggleButton.setAttribute('aria-label', 'Zur dunklen Ansicht wechseln (Dark Mode aktivieren)');
             toggleButton.setAttribute('title', 'Zur dunklen Ansicht wechseln - Schont die Augen bei Dunkelheit');
         }
+        console.log('Toggle button updated to:', toggleButton.textContent, 'for theme:', theme);
+    } else {
+        console.error('Toggle button not found when trying to update!');
     }
 }
 
 // Toggle between light and dark mode
 function toggleTheme() {
-    const currentTheme = document.documentElement.hasAttribute('data-theme') ? 'dark' : 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    applyTheme(newTheme);
-    updateToggleButton(newTheme);
+    try {
+        const currentTheme = document.documentElement.hasAttribute('data-theme') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        console.log('Toggling theme from', currentTheme, 'to', newTheme);
+        
+        applyTheme(newTheme);
+        updateToggleButton(newTheme);
+        
+        console.log('Theme toggle completed successfully');
+    } catch (error) {
+        console.error('Error during theme toggle:', error);
+    }
 }
 
 // Initialize theme toggle functionality
 function initThemeToggle() {
     const toggleButton = document.getElementById('themeToggle');
     if (toggleButton) {
-        toggleButton.addEventListener('click', toggleTheme);
+        // Remove any existing event listeners to prevent duplicates
+        toggleButton.removeEventListener('click', toggleTheme);
+        
+        // Add click event listener
+        toggleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleTheme();
+        });
         
         // Keyboard support
         toggleButton.addEventListener('keydown', function(e) {
@@ -132,6 +150,11 @@ function initThemeToggle() {
                 toggleTheme();
             }
         });
+        
+        // Debug: Confirm button is working
+        console.log('Dark Mode toggle initialized successfully');
+    } else {
+        console.error('Dark Mode toggle button not found!');
     }
 }
 
@@ -150,11 +173,33 @@ function initSystemThemeListener() {
 
 // Initialisierung beim Laden der Seite
 document.addEventListener('DOMContentLoaded', function() {
-    setCurrentYear();
-    initSmoothScrolling();
-    initHeaderScrollEffect();
-    setActiveNavigation();
-    initTheme();
-    initThemeToggle();
-    initSystemThemeListener();
+    try {
+        console.log('Initializing Stefan Spieß website functions...');
+        setCurrentYear();
+        initSmoothScrolling();
+        initHeaderScrollEffect();
+        setActiveNavigation();
+        initTheme();
+        initThemeToggle();
+        initSystemThemeListener();
+        console.log('All functions initialized successfully');
+    } catch (error) {
+        console.error('Error during initialization:', error);
+    }
 });
+
+// Fallback initialization in case DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    // DOM still loading, event listener will handle it
+} else {
+    // DOM already loaded, initialize immediately
+    setTimeout(function() {
+        try {
+            console.log('Fallback initialization triggered');
+            initTheme();
+            initThemeToggle();
+        } catch (error) {
+            console.error('Error during fallback initialization:', error);
+        }
+    }, 100);
+}
