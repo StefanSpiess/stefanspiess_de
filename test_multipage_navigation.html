@@ -226,27 +226,21 @@
             const buttonText = button ? button.textContent : 'N/A';
             
             // Page info
-            document.getElementById('pageInfo').innerHTML = `
-                <div class="test-result success">URL: ${window.location.pathname}</div>
-                <div class="test-result success">Page loaded: ${new Date().toLocaleTimeString()}</div>
-            `;
+            document.getElementById('pageInfo').textContent = 
+                `URL: ${window.location.pathname}\n` +
+                `Page loaded: ${new Date().toLocaleTimeString()}`;
             
             // Theme info
-            document.getElementById('themeInfo').innerHTML = `
-                <div class="test-result success">Current theme: ${currentTheme}</div>
-                <div class="test-result success">Saved theme: ${savedTheme}</div>
-            `;
+            document.getElementById('themeInfo').textContent = 
+                `Current theme: ${currentTheme}\n` +
+                `Saved theme: ${savedTheme}`;
             
             // Event info
-            document.getElementById('eventInfo').innerHTML = `
-                <div class="test-result ${buttonExists ? 'success' : 'error'}">Button exists: ${buttonExists}</div>
-                <div class="test-result success">Button text: ${buttonText}</div>
-                <div class="test-result success">Debug entries: ${debugLog.length}</div>
-                <details style="margin-top: 10px;">
-                    <summary>Show debug log</summary>
-                    <pre style="background: #f0f0f0; padding: 10px; margin-top: 5px; max-height: 200px; overflow-y: auto;">${debugLog.slice(-10).join('\n')}</pre>
-                </details>
-            `;
+            document.getElementById('eventInfo').textContent = 
+                `Button exists: ${buttonExists}\n` +
+                `Button text: ${buttonText}\n` +
+                `Debug entries: ${debugLog.length}\n` +
+                `Debug log:\n${debugLog.slice(-10).join('\n')}`;
         }
 
         // Initialize immediately and on DOM ready
