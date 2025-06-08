@@ -26,7 +26,7 @@
     --button-bg: #ffffff;
     --button-text: #000000;
     --button-hover: #cccccc;
-    --link-color: #ffffff;
+    --link-color: #66ccff;
     --shadow: rgba(0,0,0,0.3);
 }
 
@@ -43,6 +43,16 @@ body {
     padding-top: 80px; /* Platz für fixed header */
     background: var(--bg-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Global Link Styles */
+a {
+    color: var(--link-color);
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
 }
 
 /* Header Styles */
