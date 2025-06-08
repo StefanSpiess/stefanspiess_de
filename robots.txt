@@ -6,9 +6,15 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /.well-known/
 
-# Allow access to CSS and JS files for better crawling
+# Allow access to CSS, JS and icon files for better crawling
 Allow: /styles.css
 Allow: /script.js
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /apple-touch-icon.png
+Allow: /*.png
+Allow: /manifest.json
+Allow: /browserconfig.xml
 
 # Sitemap location
 Sitemap: https://stefanspiess.de/sitemap.xml
