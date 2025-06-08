@@ -70,16 +70,30 @@ const THEME_KEY = 'stefan-spiess-theme';
 
 // Theme detection and initialization
 function initTheme() {
-    // Check for saved theme preference or default to light mode
+    console.log('initTheme() called - starting theme initialization');
+    
+    // Check for saved theme preference first
     const savedTheme = localStorage.getItem(THEME_KEY);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    console.log('Saved theme from localStorage:', savedTheme);
     
-    // Use saved theme, or user's system preference, or default to light
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    let theme;
     
-    // Always apply the determined theme
+    if (savedTheme) {
+        // Use saved theme preference
+        theme = savedTheme;
+        console.log('Using saved theme:', theme);
+    } else {
+        // No saved preference, check system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        theme = prefersDark ? 'dark' : 'light';
+        console.log('No saved preference, using system preference:', theme);
+    }
+    
+    // Always apply and save the determined theme
     applyTheme(theme);
     updateToggleButton(theme);
+    
+    console.log('Theme initialization completed with theme:', theme);
 }
 
 // Apply theme to document
@@ -132,6 +146,8 @@ function toggleTheme() {
 
 // Initialize theme toggle functionality
 function initThemeToggle() {
+    console.log('initThemeToggle() called');
+    
     const toggleButton = document.getElementById('themeToggle');
     if (toggleButton) {
         // Remove any existing event listeners to prevent duplicates
@@ -140,6 +156,7 @@ function initThemeToggle() {
         // Add click event listener
         toggleButton.addEventListener('click', function(e) {
             e.preventDefault();
+            console.log('Theme toggle button clicked');
             toggleTheme();
         });
         
@@ -147,15 +164,39 @@ function initThemeToggle() {
         toggleButton.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
+                console.log('Theme toggle button activated via keyboard');
                 toggleTheme();
             }
         });
         
-        // Debug: Confirm button is working
+        // CRITICAL: Sync button state immediately on page load
+        syncButtonState();
+        
         console.log('Dark Mode toggle initialized successfully');
     } else {
         console.error('Dark Mode toggle button not found!');
     }
+}
+
+// Sync button state with current theme (critical for navigation between pages)
+function syncButtonState() {
+    console.log('syncButtonState() called');
+    
+    // Check current theme state from DOM and localStorage
+    const currentThemeFromDOM = document.documentElement.hasAttribute('data-theme') ? 'dark' : 'light';
+    const currentThemeFromStorage = localStorage.getItem(THEME_KEY) || 'light';
+    
+    console.log('Theme from DOM:', currentThemeFromDOM);
+    console.log('Theme from storage:', currentThemeFromStorage);
+    
+    // Use storage as source of truth (since inline script sets DOM based on storage)
+    const currentTheme = currentThemeFromStorage;
+    
+    // Ensure DOM and button are in sync
+    applyTheme(currentTheme);
+    updateToggleButton(currentTheme);
+    
+    console.log('Button state synced to theme:', currentTheme);
 }
 
 // Listen for system theme changes
@@ -191,15 +232,20 @@ document.addEventListener('DOMContentLoaded', function() {
 // Fallback initialization in case DOMContentLoaded already fired
 if (document.readyState === 'loading') {
     // DOM still loading, event listener will handle it
+    console.log('DOM still loading, DOMContentLoaded listener will handle initialization');
 } else {
     // DOM already loaded, initialize immediately
+    console.log('DOM already loaded, running immediate initialization');
     setTimeout(function() {
         try {
             console.log('Fallback initialization triggered');
-            initTheme();
+            
+            // Critical: First sync button state, then initialize theme
+            syncButtonState();
             initThemeToggle();
+            
         } catch (error) {
             console.error('Error during fallback initialization:', error);
         }
-    }, 100);
+    }, 50); // Reduced timeout for faster response
 }
