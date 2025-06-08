@@ -77,11 +77,8 @@ function initTheme() {
     // Use saved theme, or user's system preference, or default to light
     const theme = savedTheme || (prefersDark ? 'dark' : 'light');
     
-    // Theme is already applied by inline script in head, just update button
-    if (!savedTheme && prefersDark) {
-        // Only apply theme if no saved preference but system prefers dark
-        applyTheme(theme);
-    }
+    // Always apply the determined theme
+    applyTheme(theme);
     updateToggleButton(theme);
 }
 
