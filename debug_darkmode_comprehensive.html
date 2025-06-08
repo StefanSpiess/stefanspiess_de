@@ -215,10 +215,10 @@
             const button = document.getElementById('themeToggle');
             
             document.getElementById('debugInfo').innerHTML = `
-                <div class="test-result success">Current theme: ${currentTheme}</div>
-                <div class="test-result success">Saved theme: ${savedTheme}</div>
-                <div class="test-result success">Button text: ${button ? button.textContent : 'N/A'}</div>
-                <div class="test-result success">Last update: ${new Date().toLocaleTimeString()}</div>
+                <div class="test-result success">Current theme: ${escapeHTML(currentTheme)}</div>
+                <div class="test-result success">Saved theme: ${escapeHTML(savedTheme)}</div>
+                <div class="test-result success">Button text: ${button ? escapeHTML(button.textContent) : 'N/A'}</div>
+                <div class="test-result success">Last update: ${escapeHTML(new Date().toLocaleTimeString())}</div>
             `;
         }
 
@@ -238,6 +238,18 @@
             initTheme();
             initThemeToggle();
             updateDebugInfo();
+        }
+        function escapeHTML(str) {
+            return str.replace(/[&<>"']/g, function (char) {
+                const escapeMap = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                };
+                return escapeMap[char] || char;
+            });
         }
     </script>
 </body>
