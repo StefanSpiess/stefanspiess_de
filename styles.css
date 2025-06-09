@@ -275,6 +275,53 @@ a:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
+/* Make solution-link buttons always look like cta-button */
+.solution-link {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-bg);
+    box-shadow: 0 2px 8px var(--shadow);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    padding: 1.2rem 2rem;
+    margin-bottom: 0;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.solution-link h3 {
+    color: inherit;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+}
+
+.solution-link p {
+    color: inherit;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.solution-link:hover, .solution-link:focus {
+    background: var(--button-hover);
+    color: var(--button-text);
+    border-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+    text-decoration: none;
+}
+
+.solution-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 /* Contact Info Styles */
 .contact-info {
     margin-top: 1.5rem;
@@ -418,56 +465,50 @@ a:hover {
 }
 
 .solution-link {
-    display: block;
-    padding: 1.5rem;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-bg);
+    box-shadow: 0 2px 8px var(--shadow);
+    font-weight: bold;
+    font-size: 1.1rem;
     border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px var(--shadow);
-    border: 2px solid var(--border-color);
-}
-
-.solution-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px var(--shadow);
-    text-decoration: none;
-}
-
-.small-problems {
-    background: var(--card-bg);
-    color: var(--text-color);
-}
-
-.small-problems:hover {
-    border-color: var(--text-color);
-    opacity: 0.9;
-}
-
-.large-problems {
-    background: var(--card-bg);
-    color: var(--text-color);
-    opacity: 0.95;
-}
-
-.large-problems:hover {
-    border-color: var(--text-color);
-    opacity: 1;
+    padding: 1.2rem 2rem;
+    margin-bottom: 0;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
 }
 
 .solution-link h3 {
-    margin: 0 0 0.5rem 0;
+    color: inherit;
     font-size: 1.2rem;
     font-weight: bold;
+    margin: 0 0 0.5rem 0;
 }
 
 .solution-link p {
+    color: inherit;
+    font-size: 0.95rem;
+    opacity: 0.9;
     margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.8;
-    text-align: left;
 }
 
-/* Problem Example Boxes */
+.solution-link:hover, .solution-link:focus {
+    background: var(--button-hover);
+    color: var(--button-text);
+    border-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+    text-decoration: none;
+}
+
+.solution-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 .problem-example {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
