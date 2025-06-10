@@ -549,6 +549,11 @@ a:hover {
     line-height: 1.8;
 }
 
+/* Impressum-Listen: Listenpunkte innerhalb des Textblocks */
+.impressum-content ul, .impressum-content ol {
+    list-style-position: inside;
+}
+
 .impressum-content .contact-info {
     background: var(--card-bg);
     margin: 1.5rem 0;
