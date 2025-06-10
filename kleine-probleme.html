@@ -129,12 +129,17 @@
             
             <p><strong>Faire Preise:</strong> Die Lösungen für kleine Probleme kosten keine Unsummen. Oft ist sowas in 2 bis 4 Stunden erledigt.</p>
             
-            <div class="contact-info">
-                <p><strong>Haben Sie kleine Probleme, die täglich nerven? Melden Sie sich bei mir!</strong></p>
-                <p><strong>E-Mail:</strong> <a href="mailto:stefan@stefanspiess.de">stefan@stefanspiess.de</a></p>
-                <p><strong>Telefon:</strong> <a href="tel:+4915170193059">+49 151 70193059</a></p>
-            </div>
         </section>
+        <section class="content-section" id="kontakt"></section>
     </main>
+    <!-- Nur EINMAL einbinden, im <head> reicht! -->
+    <script>
+        // Header/Footer automatisch laden (aktivieren für Test)
+        loadHeaderFooter();
+        // Contact-Section dynamisch laden
+        document.addEventListener('DOMContentLoaded', function() {
+            loadContactSection('#kontakt');
+        });
+    </script>
 </body>
 </html>

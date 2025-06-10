@@ -251,13 +251,13 @@ function loadContactSection(targetSelector = '#kontakt') {
         .then(data => {
             const container = document.querySelector(targetSelector);
             if (container) {
-                // Ersetze den alten Kontaktbereich
-                container.outerHTML = data;
+                // Ersetze nur den Inhalt, nicht das Element selbst
+                container.innerHTML = data;
             } else {
                 // Fallback: Am Ende von <main> einfügen
                 const main = document.querySelector('main');
                 if (main) {
-                    main.insertAdjacentHTML('beforeend', data);
+                    main.insertAdjacentHTML('beforeend', `<section class="content-section" id="kontakt">${data}</section>`);
                 }
             }
         });

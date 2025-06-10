@@ -137,12 +137,17 @@
             
             <p><strong>Nachhaltigkeit:</strong> Nach dem Projekt läuft alles alleine. Sie bekommen die Dokumentation, die wir gemeinsam erarbeitet haben und wissen, an wen Sie sich wenden können, falls doch mal was ist.</p>
             
-            <div class="contact-info">
-                <p><strong>Haben Sie ein großes Digitalisierungsprojekt vor sich?</strong></p>
-                <p><strong>E-Mail:</strong> <a href="mailto:stefan@stefanspiess.de">stefan@stefanspiess.de</a></p>
-                <p><strong>Telefon:</strong> <a href="tel:+4915170193059">+49 151 70193059</a></p>
-            </div>
         </section>
+        <section class="content-section" id="kontakt"></section>
     </main>
+    <!-- Nur EINMAL einbinden, im <head> reicht! -->
+    <script>
+        // Header/Footer automatisch laden (aktivieren für Test)
+        loadHeaderFooter();
+        // Contact-Section dynamisch laden
+        document.addEventListener('DOMContentLoaded', function() {
+            loadContactSection('#kontakt');
+        });
+    </script>
 </body>
 </html>

@@ -63,11 +63,16 @@
             <p><strong>Social Media Marketing Management und Werbekampagnen-Optimierung (2013 - 2015)</strong><br>
             Entwicklung und kontinuierliche Optimierung von Social Media Kampagnen. Von der Zielgruppenanalyse bis zur Budgetverantwortung über CPC, CPL und CPS mit A/B Testing und Creative-Steuerung.</p>
         </section>
+        <section class="content-section" id="kontakt"></section>
     </main>
     <script src="script.js?v=9e84275"></script>
     <script>
         // Header/Footer automatisch laden (aktivieren für Test)
         loadHeaderFooter();
+        // Contact-Section dynamisch laden
+        document.addEventListener('DOMContentLoaded', function() {
+            loadContactSection('#kontakt');
+        });
     </script>
 </body>
 </html>
