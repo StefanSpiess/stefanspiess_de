@@ -502,6 +502,16 @@ a:hover {
     margin-top: auto;
 }
 
+.footer a {
+    color: #fff !important;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.footer a:hover,
+.footer a:focus {
+    color: #66ccff !important;
+}
+
 /* Page Header Styles (for Impressum and other pages) */
 .page-header {
     text-align: center;
