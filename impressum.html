@@ -36,23 +36,14 @@
     <meta name="msapplication-config" content="/browserconfig.xml?v=9e84275">
     
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js?v=9e84275"></script>
+    <script>
+        // Header/Footer automatisch laden (aktivieren für Test)
+        loadHeaderFooter();
+    </script>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">Stefan Spieß</div>
-            <nav class="nav">
-                <a href="index.html">Home</a>
-                <a href="kleine-probleme.html">Kleine Probleme</a>
-                <a href="grosse-probleme.html">Große Probleme</a>
-                <a href="projekterfahrung.html">Projekterfahrung</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Zur dunklen Ansicht wechseln (Dark Mode)" title="Zur dunklen Ansicht wechseln">
-                    🌙
-                </button>
-            </nav>
-        </div>
-    </header>
-
+    <!-- Der Header und Footer werden jetzt dynamisch per JS geladen. -->
     <main class="main-content">
         <div class="page-header">
             <h1>Impressum</h1>
@@ -208,11 +199,5 @@
             </div>
         </div>
     </main>
-
-    <footer class="footer">
-        <p>&copy; <span id="currentYear"></span> Stefan Spieß. Alle Rechte vorbehalten. | <a href="impressum.html">Impressum</a></p>
-    </footer>
-
-    <script src="script.js?v=9e84275"></script>
 </body>
 </html>

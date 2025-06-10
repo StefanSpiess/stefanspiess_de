@@ -69,7 +69,7 @@ function setActiveNavigation() {
 const THEME_KEY = 'stefan-spiess-theme';
 
 // Theme detection and initialization
-function initTheme() {
+function initTheme(options = {}) {
     console.log('initTheme() called - starting theme initialization');
     
     // Check for saved theme preference first
@@ -91,7 +91,10 @@ function initTheme() {
     
     // Always apply and save the determined theme
     applyTheme(theme);
-    updateToggleButton(theme);
+    // Nur Button updaten, wenn explizit erlaubt (z.B. nach Header-Laden)
+    if (!options.skipButtonUpdate) {
+        updateToggleButton(theme);
+    }
     
     console.log('Theme initialization completed with theme:', theme);
 }
@@ -212,16 +215,55 @@ function initSystemThemeListener() {
     });
 }
 
+// Hilfsfunktion: Prüft, ob der Header dynamisch geladen wird
+function isHeaderDynamic() {
+    // Prüfe, ob im HTML ein Platzhalter-Kommentar für dynamischen Header existiert
+    // oder ob loadHeaderFooter explizit aufgerufen wurde (z.B. window.loadHeaderFooterActive)
+    return typeof window.loadHeaderFooterActive !== 'undefined' && window.loadHeaderFooterActive;
+}
+
+function loadHeaderFooter() {
+    window.loadHeaderFooterActive = true; // Flag setzen, damit Initialisierung übersprungen wird
+    // Header
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            const header = document.createElement('div');
+            header.innerHTML = data;
+            document.body.insertBefore(header.firstElementChild, document.body.firstChild);
+            setActiveNavigation();
+            initThemeToggle();
+        });
+    // Footer
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            const footer = document.createElement('div');
+            footer.innerHTML = data;
+            document.body.appendChild(footer.firstElementChild);
+        });
+}
+
+// Optional: Automatisch laden, wenn gewünscht
+// loadHeaderFooter();
+
 // Initialisierung beim Laden der Seite
+// Nur wenn KEIN dynamischer Header verwendet wird, initialisieren
+// (Sonst übernimmt loadHeaderFooter die Initialisierung nach dem Nachladen)
 document.addEventListener('DOMContentLoaded', function() {
     try {
         console.log('Initializing Stefan Spieß website functions...');
         setCurrentYear();
         initSmoothScrolling();
         initHeaderScrollEffect();
-        setActiveNavigation();
-        initTheme();
-        initThemeToggle();
+        if (!isHeaderDynamic()) {
+            setActiveNavigation();
+            initTheme();
+            initThemeToggle();
+        } else {
+            // Theme sofort setzen, aber Button-Update überspringen
+            initTheme({ skipButtonUpdate: true });
+        }
         initSystemThemeListener();
         console.log('All functions initialized successfully');
     } catch (error) {
