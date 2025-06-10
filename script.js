@@ -244,6 +244,25 @@ function loadHeaderFooter() {
         });
 }
 
+// Contact Section Loader für statische Seiten
+function loadContactSection(targetSelector = '#kontakt') {
+    fetch('contact-section.html')
+        .then(response => response.text())
+        .then(data => {
+            const container = document.querySelector(targetSelector);
+            if (container) {
+                // Ersetze den alten Kontaktbereich
+                container.outerHTML = data;
+            } else {
+                // Fallback: Am Ende von <main> einfügen
+                const main = document.querySelector('main');
+                if (main) {
+                    main.insertAdjacentHTML('beforeend', data);
+                }
+            }
+        });
+}
+
 // Optional: Automatisch laden, wenn gewünscht
 // loadHeaderFooter();
 
